@@ -6,8 +6,8 @@ X_train <- read.table('./train/X_train.txt')
 y_train <- read.table('./train/y_train.txt')
 
 cat('Subject_id    : ', dim(subj_train), ' ')
-cat('Activity label: ', dim(X_train), ' ')
-cat('Training data : ', dim(y_train), ' ')
+cat('Activity label: ', dim(y_train), ' ')
+cat('Training data : ', dim(X_train), ' ')
 
 # Combine them and name the id and activity label columns
 train <- cbind(subj_train, y_train, X_train)
@@ -22,8 +22,8 @@ X_test <- read.table('./test/X_test.txt')
 y_test <- read.table('./test/y_test.txt')
 
 cat('Subject_id    : ', dim(subj_test), ' ')
-cat('Activity label: ', dim(X_test), ' ')
-cat('Testing data : ', dim(y_test), ' ')
+cat('Activity label: ', dim(y_test), ' ')
+cat('Testing data : ', dim(X_test), ' ')
 
 # Combine them and name the id and activity label columns
 test <- cbind(subj_test, y_test, X_test)
