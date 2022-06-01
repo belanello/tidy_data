@@ -49,9 +49,6 @@ indices <- grep('(.*mean.*)|(.*std.*)',features)
 merged <- merged[, c(1,2,indices + 2)]
 cat('Merged data with selected columns: ', dim(merged), ' ')
 
-# Add variable names to the selected data set
-colnames(merged)[-(1:2)] <- features[indices]
-head(merged)
 
 # 3. Use descriptive activity names to name the activities in the data set
 
@@ -68,12 +65,14 @@ head(merged$activity)
 
 # 4.Appropriately labels the data set with descriptive variable names
 
+# Add variable names to the selected data set
+colnames(merged)[-(1:2)] <- features[indices]
+head(merged)
+
 # Remove '()' from variable names
 names(merged) <- sub('\\()','',names(merged))
 head(merged)
 
-names(merged) <- sub('\\()','',names(merged))
-names(merged)
 
 # Lastly order the dataframe by id 
 # and change the name of dataframe to 'tidy_data'

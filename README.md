@@ -1,87 +1,75 @@
-## Getting and Cleaning Data Course project
+## Getting and Cleaning Data Course Project  
 
-The data we use in this project is collected from the accelerometers from the Samsung Galaxy S smartphone.
-[http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones]  
-We are to write a R script 'run_analysis.R' to merge different pieces of data together into one table and make it clean and tidy following below instructions.
+---
 
->1. Merges the training and the test sets to create one data set.
->2. Extracts only the measurements on the mean and standard deviation for each measurement. 
->3. Uses descriptive activity names to name the activities in the data set
->4. Appropriately labels the data set with descriptive variable names. 
->5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+The purpose of this project is to demonstrate the skills of reconstructing the data table from the raw data to be ready for analysis and examine the understandings of the concept of _tidy data_.
 
-### 1. Merges the training and the test sets to create one data set.
+We are to write a R script 'run_analysis.R' to merge different pieces of data together into one table and make it clean and tidy following below instructions.  
 
-Before write the script, I deleted the unnecessary files and reorganize directories
-for easier access. below is original directories and a reoraganized directories.
+1. Merges the training and the test sets to create one data set.
+2. Extracts only the measurements on the mean and standard deviation for each measurement. 
+3. Uses descriptive activity names to name the activities in the data set
+4. Appropriately labels the data set with descriptive variable names. 
+5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+Data:  [http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones]  
+
+### -Repository Contents  
+
+---
+
+|File name      |Description         |
+|---------------|--------------------|
+|*README.md       |Documentation of the project |
+|*run_analysis.R |R script to create a tidy data set|
+|*final_df.csv |csv file of the final data table of the project|
+|*CodeBook.md |Description of the features|
+|train/ subject_train.txt|Identifier of the subjects for training data (7352,1)|
+|train/ X_train.txt|Records of Triaxial acceleration from the accelerometer / Triaxial Angular velocity from the gyroscope. (7352,561)|
+|train/ y_train.txt|Activity labels (7352,1)|
+|test/ subject_test.txt|Identifier of the subjects for training data (2947,1)|
+|test/ X_test.txt|Records of Triaxial acceleration from the accelerometer / Triaxial Angular velocity from the gyroscope. (2947,561)|
+|test/ y_test.txt|Activity labels (2947,1)|
+|activity_labels.txt|Description of activities corresponding to the activity labels (6,2)|
+|features.txt|Feature names (561,2)|  
+
+- _The file names starting with \* are to be reviewed._  
+- _The numbers in parentheses are the dimensions of data._
+
+### -Steps to merge/transform the data sets 
+
+---
+
+run_analysis.R script does
+
+**Combine all 6 files together**  
+
+1. combine subject id, activity labels, observational data for training data by columns.
+2. combine subject id, activity labels, observational data for test data by columns.
+3. combine 2 dataframes above by rows 
+
+**Extracts only the measurements on the mean and standard deviation for each measurement.**  
+
+1. Load the variable names from features.txt
+2. Use regular expressions to extract the indices of the variable names containing mean/std. (Note: I did not include the variable names like 'angle(tBodyAccJerkMean),gravityMean)' because the figures are the angles between vectors according to their codebook.)
+3. Subset the columns using indices from previous step from the merged data.
+
+**Change integer labels to actual activity names in the activity column**
+
+1. Activity names are stored as integer label in 'activity' column. Factored this column and labeled with actual activity names using data from 'activity_label.txt'
+
+**Appropriately labels the data set with descriptive variable names**  
+
+1. Label the columns 
+2. Remove '()' from all the variable names.(Note: I did not change variable names to keep them descriptive and short. Details of variable names are explained in the code book.)  
+
+**Create a second, independent tidy data set with the average of each variable for each activity and each subject**  
+
+1. Group the data by activity then subject id. 
+2. Calculated each mean values.
+3. wrote the data in csv file 'final_df.csv.  
 
 
-original directory   
-```    
-UCI HAR Dataset/train/subject_train.txt
-                      X_train.txt
-                      y_train.txt
-                      Inertial Signals/body_acc_x_train.txt etc
-            
-               /test/subject_test.txt
-                     X_test.txt
-                     y_text.txt
-                     Inertial Signals/body_acc_x_train.txt etc
-                     
-               activity_labels.txt
-               features.txt
-               features_info.txt
-               README.txt
-```              
-New directory  
-```  
-               activity_labels.txt
-               features.txt
-               original_codebook/features_info.txt
-                                 README.txt
-               train/subject_train.txt
-                     X_train.txt
-                     y_train.txt
-               
-               test/subject_test.txt
-                    X_test.txt
-                    y_text.txt
 
-```
-Steps to merge 6 files
--1. Merge training data files (subject_train.txt(7352,1),
-                              y_train.txt(7352,1),
-                              X_train.txt(7352,561))
-
--> 7352 rows * 562 columns   
-
--2. Merge test data files     (subject_test.txt(2947,1),
-                              y_test.txt(2947,1),
-                              X_test.txt(2947,561))
-
--> 2947 rows * 561 coolumns
-
--3. Merge training and test data together
--> 10299 rows * 563 columns
-
-### 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
-
--1.read the variable names from features.txt and extract only the variable names containing mean/std. Note that I did not include the variable names like 'angle(tBodyAccJerkMean),gravityMean)' because the figures are angles between vectors according to their codebook.  
-
--2.subset the data using indices from previous step from the merged data.
-
-
-#### 3. Use descriptive activity names to name the activities in the data set
-
-Activity names are stored as integer label in 'activity' column. Factored this column and labeled with actual activity names using data from 'activity_label.txt'
-
-#### 4.Appropriately labels the data set with descriptive variable names
-Variable names of the merged data have still '()'. Removed them all but I did not change any variable names since it already descriptive enough.
-
-#### 5.Create a second, independent tidy data set with the average of each 
-variable for each actibity and each subject
-
-Group the data by activity then subject id. Calculated each mean values.
-wrote the data in csv file.
 
 
