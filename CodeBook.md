@@ -2,9 +2,9 @@
 
 ---  
 
-Originally, there are 561 features but reduced to 81 features with only mean and standard deviation values. In the final dataset "tidy_data_2.csv", observations are grouped by 6 different activities and then 30 identifiers of the subjects. The values of each row are the average for each id in a specific activity.   
+Originally, there are 561 features but reduced to 81 features with only mean and standard deviation values. In the final dataset "tidy_data_2.csv", observations are grouped by 6 different activities and then 30 identifiers of the subjects. The values of each row are the averages for each id in a specific activity.   
 
-[The feature information]
+[The feature information] *_from the original codebook_  
 
 The features come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
