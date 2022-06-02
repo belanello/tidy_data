@@ -69,7 +69,7 @@ run_analysis.R script does
 
 1. Group the data by activity then subject id. 
 2. Calculate each mean values.
-3. Write the data in a text file 'final_df.txt'  
+3. Write the data in a text file 'tidy_data_2.txt'  
 
 
 
