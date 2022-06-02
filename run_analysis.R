@@ -85,6 +85,6 @@ View(tidy_data_2)
 cat('final dataset dimention: ',dim(tidy_data_2))
 
 # Save dataframe as csv file 
-write.csv(tidy_data_2,'tidy_data_2.csv',row.names = FALSE)
+write.table(tidy_data_2,'tidy_data_2.txt',row.names = FALSE)
 
 
