@@ -24,7 +24,7 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 |---------------|--------------------|
 |*README.md       |Documentation of the project |
 |*run_analysis.R |R script to create a tidy data set|
-|*tidy_data_2.csv |csv file of the final data table of the project|
+|*tidy_data_2.txt |text file of the final data table of the project|
 |*CodeBook.md |Description of the features|
 |train/ subject_train.txt|Identifier of the subjects for training data (7352,1)|
 |train/ X_train.txt|Records of Triaxial acceleration from the accelerometer / Triaxial Angular velocity from the gyroscope. (7352,561)|
@@ -69,7 +69,7 @@ run_analysis.R script does
 
 1. Group the data by activity then subject id. 
 2. Calculate each mean values.
-3. Write the data in csv file 'final_df.csv.  
+3. Write the data in a text file 'final_df.txt'  
 
 
 
