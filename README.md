@@ -46,9 +46,9 @@ run_analysis.R script does
 
 **Combine all 6 files together(line 4-31)**  
 
-1. combine subject id, activity labels, observational data for training data by columns.
-2. combine subject id, activity labels, observational data for test data by columns.
-3. combine 2 dataframes above by rows 
+1. Combine subject id, activity labels, observational data for training data by columns.
+2. Combine subject id, activity labels, observational data for test data by columns.
+3. Combine 2 dataframes above by rows 
 
 **Extract only the measurements on the mean and standard deviation for each measurement.(line 33-43)**  
 
@@ -68,8 +68,8 @@ run_analysis.R script does
 **Create a second, independent tidy data set with the average of each variable for each activity and each subject(line 76-88)**  
 
 1. Group the data by activity then subject id. 
-2. Calculated each mean values.
-3. wrote the data in csv file 'final_df.csv.  
+2. Calculate each mean values.
+3. Write the data in csv file 'final_df.csv.  
 
 
 
